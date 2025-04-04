@@ -1,5 +1,7 @@
 package br.com.ldf.medium.function;
 
+import br.com.ldf.medium.function.persistence.Customer;
+import br.com.ldf.medium.function.service.CustomerService;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
@@ -8,6 +10,12 @@ import java.util.function.Function;
 
 @SpringBootApplication
 public class SpringCloudFunctionAwsApplication {
+
+    private final CustomerService customerService;
+
+    public SpringCloudFunctionAwsApplication(CustomerService customerService) {
+        this.customerService = customerService;
+    }
 
     /*
      * You need this main method (empty) or explicit <start-class>example.FunctionConfiguration</start-class>
@@ -19,7 +27,7 @@ public class SpringCloudFunctionAwsApplication {
     }
 
     @Bean
-    public Function<String, String> uppercase() {
-        return value -> value.toUpperCase(Locale.ROOT);
+    public Function<Long, Customer> getCustomerById() {
+        return customerService::getCustomerById;
     }
 }

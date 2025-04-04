@@ -1,6 +1,18 @@
 spring:
   application:
     name: spring-cloud-function
+  main:
+    lazy-initialization: true
   cloud:
     function:
-      definition: uppercase
+      definition: getCustomerById
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
