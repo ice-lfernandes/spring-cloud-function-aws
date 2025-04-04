@@ -3,14 +3,4 @@ spring:
     name: spring-cloud-function
   cloud:
     function:
-      definition: getCustomerById
-  datasource:
-    url: jdbc:h2:mem:testdb
-    driverClassName: org.h2.Driver
-    username: sa
-    password:
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    hibernate.ddl-auto: update
-  main:
-    web-application-type: NONE
+      definition: uppercase
